@@ -380,7 +380,8 @@ def pretrainAPN(trainset, trainloader):
         if (iteration % 20) == 0:
             print(" [*] pre_apn_epoch[%d], || pre_apn_iter %d || pre_apn_loss: %.4f || Timer: %.4fsec" %
                   (apn_epoch, iteration, apn_loss.item(), (t1 - t0)))
-            
+
+        if (iteration % 200) == 0:    
             torch.save(net.state_dict(),
                        'ckpt/preAPN/preAPN_voc_iter%d.pth' % iteration)
 
