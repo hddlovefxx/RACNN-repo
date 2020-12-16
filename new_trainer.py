@@ -381,14 +381,14 @@ def pretrainAPN(trainset, trainloader):
             print(" [*] pre_apn_epoch[%d], || pre_apn_iter %d || pre_apn_loss: %.4f || Timer: %.4fsec" %
                   (apn_epoch, iteration, apn_loss.item(), (t1 - t0)))
 
-        if (iteration % 200) == 0:    
+        if (iteration % 200) == 0:     
             torch.save(net.state_dict(),
                        'ckpt/preAPN/preAPN_voc_iter%d.pth' % iteration)
 
         foo.add_scalar("pre_apn_loss", apn_loss.item(), iteration + 1)
-        #logger.scalar_summary('pre_apn_loss', apn_loss.item(), iteration + 1)
+        # logger.scalar_summary('pre_apn_loss', apn_loss.item(), iteration + 1)
 
-    return epochAPN, apn_epoch, apn_steps # 修改
+    return epochAPN, apn_epoch, apn_steps  # 修改
 
 
 def test(testloader, iteration):
