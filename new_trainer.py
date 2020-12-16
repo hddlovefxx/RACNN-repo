@@ -297,8 +297,8 @@ def train():
             _, _, _, crops = net(test_sample)
             x1, x2 = crops[0].data, crops[1].data
             # visualize cropped inputs
-            #save_img(x1, path=f'samples/iter_{iteration}@2x.jpg', annotation=f'loss = {avg_loss:.7f}, step = {iteration}')
-            #save_img(x2, path=f'samples/iter_{iteration}@4x.jpg', annotation=f'loss = {avg_loss:.7f}, step = {iteration}')
+            # save_img(x1, path=f'samples/iter_{iteration}@2x.jpg', annotation=f'loss = {avg_loss:.7f}, step = {iteration}')
+            # save_img(x2, path=f'samples/iter_{iteration}@4x.jpg', annotation=f'loss = {avg_loss:.7f}, step = {iteration}')
 
             torch.save(net.state_dict(),
                        'ckpt/RACNN_vgg_voc_iter%d.pth' % iteration)
