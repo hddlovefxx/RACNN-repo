@@ -126,7 +126,7 @@ def train():
 
     doLoad=False
     if doLoad:
-        checkpoint = torch.load('ckpt/RACNN_vgg_voc_iter.pth')  # 自己指定
+        checkpoint = torch.load('ckpt/RACNN_vgg_voc_iter4982.pth')  # 自己指定
         net.load_state_dict(checkpoint['state_dict'])
         iteration = checkpoint['epoch']
     # count = 5201*epoch_init
@@ -178,9 +178,9 @@ def train():
                 cls_tol = 0
 
             foo.add_scalar("cls_loss", new_cls_loss.item(), iteration + 1)
-            foo.add_scalar("cls_loss1", new_cls_loss[0].item(), iteration + 1)
-            foo.add_scalar("cls_loss12", new_cls_loss[1].item(), iteration + 1)
-            foo.add_scalar("cls_loss123", new_cls_loss[2].item(), iteration + 1)
+            # foo.add_scalar("cls_loss1", new_cls_loss[0].item(), iteration + 1)
+            # foo.add_scalar("cls_loss12", new_cls_loss[1].item(), iteration + 1)
+            # foo.add_scalar("cls_loss123", new_cls_loss[2].item(), iteration + 1)
 
             # logger.scalar_summary('cls_loss', new_cls_loss.item(), iteration + 1)
             # logger.scalar_summary('cls_loss1', new_cls_losses[0].item(), iteration + 1)
@@ -313,13 +313,13 @@ def pretrainAPN(trainset, trainloader):
     
     doPreLoad=False
     if doPreLoad:
-        checkpoint = torch.load('/workspace/Disk/hdd/RACNN-pytorch-master/ckpt/preAPN/preAPN_voc_iter1980.pth')  # 自己指定
+        checkpoint = torch.load('ckpt/preAPN/preAPN_voc_iter1980.pth')  # 自己指定
         net.load_state_dict(checkpoint)
-        epoch_init = 20
+        epoch_init = 1980
     # count = 5201*epoch_init
     else:
         epoch_init=0
-    for _iter in range(epoch_init, epochAPN):  # 20000-200
+    for _iter in range(epoch_init, epochAPN):
         iteration = _iter
         if (not batch_iterator) or (iteration % epoch_size == 0):
             batch_iterator = iter(trainloader)
