@@ -167,7 +167,7 @@ def train():
             opt1.zero_grad()
             new_cls_losses = multitask_loss(logits, labels)
             new_cls_loss = sum(new_cls_losses)
-            #new_cls_loss = new_cls_losses[0]
+            # new_cls_loss = new_cls_losses[0]
             new_cls_loss.backward()
             opt1.step()
             t1 = time.time()
@@ -178,9 +178,9 @@ def train():
                 cls_tol = 0
 
             foo.add_scalar("cls_loss", new_cls_loss.item(), iteration + 1)
-            # foo.add_scalar("cls_loss1", new_cls_loss[0].item(), iteration + 1)
-            # foo.add_scalar("cls_loss12", new_cls_loss[1].item(), iteration + 1)
-            # foo.add_scalar("cls_loss123", new_cls_loss[2].item(), iteration + 1)
+            foo.add_scalar("cls_loss1", new_cls_losses[0].item(), iteration + 1)
+            foo.add_scalar("cls_loss12", new_cls_losses[1].item(), iteration + 1)
+            foo.add_scalar("cls_loss123", new_cls_losses[2].item(), iteration + 1)
 
             # logger.scalar_summary('cls_loss', new_cls_loss.item(), iteration + 1)
             # logger.scalar_summary('cls_loss1', new_cls_losses[0].item(), iteration + 1)
